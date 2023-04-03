@@ -9,10 +9,11 @@ define("HIRAGANA",     0);
 define("HIRAGANAYOON", 1);
 define("KATAKANA",     2);
 define("KATAKANAYOON", 3);
-define("WIDTH",  350);
+define("KATAKANAEXT",  4);
+define("WIDTH",  400);
 define("HEIGHT", 530);
-define("BUTTON_PLAY", floor(WIDTH / 5) - 4);
-define("HCARD", HEIGHT - (BUTTON_PLAY + 20 + 80));
+define("BUTTON_PLAY", floor(WIDTH / 6) - 4);
+define("HCARD", HEIGHT - (BUTTON_PLAY + 24 + 80));
 
 if (stripos($_SERVER['HTTP_USER_AGENT'], "google") !== false) {
 ?>
@@ -43,7 +44,8 @@ var data = [
     [ <?php print(HIRAGANAYOON); ?>, "H+", "hiragana", [["kya", "きゃ"], ["kyu", "きゅ"], ["kyo", "きょ"], ["sha", "しゃ"], ["shu", "しゅ"], ["sho", "しょ"], ["cha", "ちゃ"], ["chu", "ちゅ"], ["cho", "ちょ"], ["nya", "にゃ"], ["nyu", "にゅ"], ["nyo", "にょ"], ["hya", "ひゃ"], ["hyu", "ひゅ"], ["hyo", "ひょ"], ["mya", "みゃ"], ["rya", "りゃ"], ["gya", "ぎゃ"], ["zya", "じゃ"], ["dya", "ぢゃ"], ["myu", "みゅ"], ["ryu", "りゅ"], ["gyu", "ぎゅ"], ["zyu", "じゅ"], ["dyu", "ぢゅ"], ["myo", "みょ"], ["ryo", "りょ"], ["gyo", "ぎょ"], ["zyo", "じょ"], ["dyo", "ぢょ"], ["bya", "びゃ"], ["byu", "びゅ"], ["byo", "びょ"], ["pya", "ぴゃ"], ["pyu", "ぴゅ"], ["pyo", "ぴょ"]]],
     [ <?php print(KATAKANA); ?>, "K", "katakana", [["a", "ア"], ["i", "イ"], ["u", "ウ"], ["e", "エ"], ["o", "オ"], ["ka", "カ"], ["ki", "キ"], ["ku", "ク"], ["ke", "ケ"], ["ko", "コ"], ["sa", "サ"], ["shi", "シ"], ["su", "ス"], ["se", "セ"], ["so", "ソ"], ["ta", "タ"], ["chi", "チ"], ["tsu", "ツ"], ["te", "テ"], ["to", "ト"], ["na", "ナ"], ["ni", "ニ"], ["nu", "ヌ"], ["ne", "ネ"], ["no", "ノ"], ["ha", "ハ"], ["hi", "ヒ"], ["fu", "フ"], ["he", "ヘ"], ["ho", "ホ"], ["ma", "マ"], ["mi", "ミ"], ["mu", "ム"], ["me", "メ"], ["mo", "モ"], ["ya", "ヤ"], ["yu", "ユ"], ["yo", "ヨ"], ["ra", "ラ"], ["ri", "リ"], ["ru", "ル"], ["re", "レ"], ["ro", "ロ"], ["wa", "ワ"], ["n", "ン"], ["wo", "ヲ"],
                     ["ga", "ガ"], ["gi", "ギ"], ["gu", "グ"], ["ge", "ゲ"], ["go", "ゴ"], ["za", "ザ"], ["dzi", "ジ"], ["zu", "ズ"], ["ze", "ゼ"], ["zo", "ゾ"], ["da", "ダ"], ["dji", "ヂ"], ["dzu", "ヅ"], ["de", "デ"], ["do", "ド"], ["ba", "バ"], ["bi", "ビ"], ["bu", "ブ"], ["be", "ベ"], ["bo", "ボ"], ["pa", "パ"], ["pi", "ピ"], ["pu", "プ"], ["pe", "ペ"], ["po", "ポ"]]],
-    [ <?php print(KATAKANAYOON); ?>, "K+", "katakana", [["kya", "キャ"], ["kyu", "キュ"], ["kyo", "キョ"], ["sha", "シャ"], ["shu", "シュ"], ["sho", "ショ"], ["cha", "チャ"], ["chu", "チュ"], ["cho", "チョ"], ["nya", "ニャ"], ["nyu", "ニュ"], ["nyo", "ニョ"], ["hya", "ヒャ"], ["hyu", "ヒュ"], ["hyo", "ヒョ"], ["mya", "ミャ"], ["rya", "リャ"], ["gya", "ギャ"], ["zya", "ジャ"], ["dya", "ヂャ"], ["myu", "ミュ"], ["ryu", "リュ"], ["gyu", "ギュ"], ["zyu", "ジュ"], ["dyu", "ヂュ"], ["myo", "ミョ"], ["ryo", "リョ"], ["gyo", "ギョ"], ["zyo", "ジョ"], ["dyo", "ヂョ"], ["bya", "ビャ"], ["byu", "ビュ"], ["byo", "ビョ"], ["pya", "ピャ"], ["pyu", "ピュ"], ["pyo", "ピョ"]]]
+    [ <?php print(KATAKANAYOON); ?>, "K+", "katakana", [["kya", "キャ"], ["kyu", "キュ"], ["kyo", "キョ"], ["sha", "シャ"], ["shu", "シュ"], ["sho", "ショ"], ["cha", "チャ"], ["chu", "チュ"], ["cho", "チョ"], ["nya", "ニャ"], ["nyu", "ニュ"], ["nyo", "ニョ"], ["hya", "ヒャ"], ["hyu", "ヒュ"], ["hyo", "ヒョ"], ["mya", "ミャ"], ["rya", "リャ"], ["gya", "ギャ"], ["zya", "ジャ"], ["dya", "ヂャ"], ["myu", "ミュ"], ["ryu", "リュ"], ["gyu", "ギュ"], ["zyu", "ジュ"], ["dyu", "ヂュ"], ["myo", "ミョ"], ["ryo", "リョ"], ["gyo", "ギョ"], ["zyo", "ジョ"], ["dyo", "ヂョ"], ["bya", "ビャ"], ["byu", "ビュ"], ["byo", "ビョ"], ["pya", "ピャ"], ["pyu", "ピュ"], ["pyo", "ピョ"]]],
+    [ <?php print(KATAKANAEXT); ?>, "Ke", "katakana", [["yi", "イィ"], ["ye", "イェ"], ["wa", "ウァ"], ["wi", "ウィ"], ["wu", "ウゥ"], ["we", "ウェ"], ["wo", "ウォ"], ["wyu", "ウュ"], ["va", "ヴァ"], ["vi", "ヴィ"], ["vu", "ヴ"], ["ve", "ヴェ"], ["vo", "ヴォ"], ["vya", "ヴャ"], ["vyu", "ヴュ"], ["vye", "ヴィェ"], ["vyo", "ヴョ"], ["kye", "キェ"], ["gye", "ギェ"], ["kwa", "クァ"], ["kwi", "クィ"], ["kwe", "クェ"], ["kwo", "クォ"], ["kwa", "クヮ"], ["gwa", "グァ"], ["gwi", "グィ"], ["gwe", "グェ"], ["gwo", "グォ"], ["gwa", "グヮ"], ["she", "シェ"], ["je", "ジェ"], ["si", "スィ"], ["zi", "ズィ"], ["che", "チェ"], ["tsa", "ツァ"], ["tsi", "ツィ"], ["tse", "ツェ"], ["tso", "ツォ"], ["tsyu", "ツュ"], ["ti", "ティ"], ["tu", "トゥ"], ["tyu", "テュ"], ["di", "ディ"], ["du", "ドゥ"], ["dyu", "デュ"], ["nye", "ニェ"], ["hye", "ヒェ"], ["bye", "ビェ"], ["pye", "ピェ"], ["fa", "ファ"], ["fi", "フィ"], ["fe", "フェ"], ["fo", "フォ"], ["fya", "フャ"], ["fyu", "フュ"], ["fye", "フィェ"], ["fyo", "フョ"], ["hu", "ホゥ"], ["mye", "ミェ"], ["rye", "リェ"]]]
 ];
 
 var selection = [];
@@ -191,7 +193,7 @@ function printButtons() {
 	     }
 	     #buttons {
 		 float: left;
-		 width: <?php print(BUTTON_PLAY * 5 + 20); ?>px;
+		 width: <?php print(BUTTON_PLAY * 6 + 24); ?>px;
 		 padding: inherit;
 		 border: inherit;
 	     }
@@ -278,7 +280,7 @@ function printButtons() {
         <div id="square" class="centered">
             <div id="buttons" class="centered">
 <?php
-    for ($i = 0; $i < 4; $i++)
+    for ($i = 0; $i < 5; $i++)
          printf("<div class=\"buttons\" id=\"set_%d\" onclick=\"turnSet(%d);\"></div>", $i, $i);
 ?>
                 <div class="buttons" id="face" onclick="nextFace();"></div>
@@ -294,5 +296,6 @@ function printButtons() {
         </div>
         <p style="font-size:45%;margin-top:25px;">Generated in <?php print(microtime(true) - $timestart); ?> seconds::::<a href="https://github.com/er-1/kana">GitHub</a></p>
         <p style="font-size:45%;">Thanks to <a href="https://www.cl.cam.ac.uk/~fms27/">Franck Stajano</a> for his sets of <a href="https://www.cl.cam.ac.uk/~fms27/goodies/fms-kana.pdf">flash cards</a> to practice the Japanese kana.</p>
+        <p style="font-size:45%;">Extended katakana from <a href="https://en.wikipedia.org/wiki/Katakana">here</a>.</p>
     </body>
     </html>
