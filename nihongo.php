@@ -292,6 +292,7 @@ function printButtons() {
                 <div id="refresh" onclick="refresh();" class="next">⟳</div>
             </div>
         </div>
-        <p style="font-size:45%;">Generated in <?php print(microtime(true) - $timestart); ?> seconds::::<a href="https://github.com/er-1/kana">GitHub</a></p>
+        <p style="font-size:45%;margin-top:25px;">Generated in <?php print(microtime(true) - $timestart); ?> seconds::::<a href="https://github.com/er-1/kana">GitHub</a></p>
+        <p style="font-size:45%;">Thanks to <a href="https://www.cl.cam.ac.uk/~fms27/">Franck Stajano</a> for his sets of <a href="https://www.cl.cam.ac.uk/~fms27/goodies/fms-kana.pdf">flash cards</a> to practice the Japanese kana.</p>
     </body>
     </html>
