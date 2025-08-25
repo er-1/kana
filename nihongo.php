@@ -10,10 +10,27 @@ define("HIRAGANAYOON", 1);
 define("KATAKANA",     2);
 define("KATAKANAYOON", 3);
 define("KATAKANAEXT",  4);
+
+define("THINGS",  0);
+define("MONTHS",  1);
+define("DAYS",    2);
+define("HOURS",   3);
+define("MINUTES", 4);
+
 define("WIDTH",  400);
 define("HEIGHT", 530);
 define("BUTTON_PLAY", floor(WIDTH / 6) - 4);
 define("HCARD", HEIGHT - (BUTTON_PLAY + 24 + 80));
+
+define("MODEKANA", 0);
+define("MODENB",   1);
+$mode = MODEKANA;
+
+if (array_key_exists("M", $_REQUEST)) {
+    $tmp = chop($_REQUEST["M"]);
+    if ($tmp == MODENB)
+        $mode = MODENB;
+}
 
 if (stripos($_SERVER['HTTP_USER_AGENT'], "google") !== false) {
 ?>
@@ -39,6 +56,7 @@ if (stripos($_SERVER['HTTP_USER_AGENT'], "google") !== false) {
 	<script src="jquery.js"></script>
 	<script>
 var data = [
+<?php if ($mode == MODEKANA) { ?>
     [ <?php print(HIRAGANA); ?>, "H", "hiragana", [["a", "あ"], ["i", "い"], ["u", "う"], ["e", "え"], ["o", "お"], ["ka", "か"], ["ki", "き"], ["ku", "く"], ["ke", "け"], ["ko", "こ"], ["sa", "さ"], ["shi", "し"], ["su", "す"], ["se", "せ"], ["so", "そ"], ["ta", "た"], ["chi", "ち"], ["tsu", "つ"], ["te", "て"], ["to", "と"], ["na", "な"], ["ni", "に"], ["nu", "ぬ"], ["ne", "ね"], ["no", "の"], ["ha", "は"], ["hi", "ひ"], ["fu", "ふ"], ["he", "へ"], ["ho", "ほ"], ["ma", "ま"], ["mi", "み"], ["mu", "む"], ["me", "め"], ["mo", "も"], ["ya", "や"], ["yu", "ゆ"], ["yo", "よ"], ["ra", "ら"], ["ri", "り"], ["ru", "る"], ["re", "れ"], ["ro", "ろ"], ["wa", "わ"], ["n", "ん"], ["wo", "を"],
                     ["ga", "が"], ["gi", "ぎ"], ["gu", "ぐ"], ["ge", "げ"], ["go", "ご"], ["za", "ざ"], ["dzi", "じ"], ["zu", "ず"], ["ze", "ぜ"], ["zo", "ぞ"], ["da", "だ"], ["dji", "ぢ"], ["dzu", "づ"], ["de", "で"], ["do", "ど"], ["ba", "ば"], ["bi", "び"], ["bu", "ぶ"], ["be", "べ"], ["bo", "ぼ"], ["pa", "ぱ"], ["pi", "ぴ"], ["pu", "ぷ"], ["pe", "ぺ"], ["po", "ぽ"]]],
     [ <?php print(HIRAGANAYOON); ?>, "H+", "hiragana", [["kya", "きゃ"], ["kyu", "きゅ"], ["kyo", "きょ"], ["sha", "しゃ"], ["shu", "しゅ"], ["sho", "しょ"], ["cha", "ちゃ"], ["chu", "ちゅ"], ["cho", "ちょ"], ["nya", "にゃ"], ["nyu", "にゅ"], ["nyo", "にょ"], ["hya", "ひゃ"], ["hyu", "ひゅ"], ["hyo", "ひょ"], ["mya", "みゃ"], ["rya", "りゃ"], ["gya", "ぎゃ"], ["zya", "じゃ"], ["dya", "ぢゃ"], ["myu", "みゅ"], ["ryu", "りゅ"], ["gyu", "ぎゅ"], ["zyu", "じゅ"], ["dyu", "ぢゅ"], ["myo", "みょ"], ["ryo", "りょ"], ["gyo", "ぎょ"], ["zyo", "じょ"], ["dyo", "ぢょ"], ["bya", "びゃ"], ["byu", "びゅ"], ["byo", "びょ"], ["pya", "ぴゃ"], ["pyu", "ぴゅ"], ["pyo", "ぴょ"]]],
@@ -46,6 +64,13 @@ var data = [
                     ["ga", "ガ"], ["gi", "ギ"], ["gu", "グ"], ["ge", "ゲ"], ["go", "ゴ"], ["za", "ザ"], ["dzi", "ジ"], ["zu", "ズ"], ["ze", "ゼ"], ["zo", "ゾ"], ["da", "ダ"], ["dji", "ヂ"], ["dzu", "ヅ"], ["de", "デ"], ["do", "ド"], ["ba", "バ"], ["bi", "ビ"], ["bu", "ブ"], ["be", "ベ"], ["bo", "ボ"], ["pa", "パ"], ["pi", "ピ"], ["pu", "プ"], ["pe", "ペ"], ["po", "ポ"]]],
     [ <?php print(KATAKANAYOON); ?>, "K+", "katakana", [["kya", "キャ"], ["kyu", "キュ"], ["kyo", "キョ"], ["sha", "シャ"], ["shu", "シュ"], ["sho", "ショ"], ["cha", "チャ"], ["chu", "チュ"], ["cho", "チョ"], ["nya", "ニャ"], ["nyu", "ニュ"], ["nyo", "ニョ"], ["hya", "ヒャ"], ["hyu", "ヒュ"], ["hyo", "ヒョ"], ["mya", "ミャ"], ["rya", "リャ"], ["gya", "ギャ"], ["zya", "ジャ"], ["dya", "ヂャ"], ["myu", "ミュ"], ["ryu", "リュ"], ["gyu", "ギュ"], ["zyu", "ジュ"], ["dyu", "ヂュ"], ["myo", "ミョ"], ["ryo", "リョ"], ["gyo", "ギョ"], ["zyo", "ジョ"], ["dyo", "ヂョ"], ["bya", "ビャ"], ["byu", "ビュ"], ["byo", "ビョ"], ["pya", "ピャ"], ["pyu", "ピュ"], ["pyo", "ピョ"]]],
     [ <?php print(KATAKANAEXT); ?>, "Ke", "katakana", [["yi", "イィ"], ["ye", "イェ"], ["wa", "ウァ"], ["wi", "ウィ"], ["wu", "ウゥ"], ["we", "ウェ"], ["wo", "ウォ"], ["wyu", "ウュ"], ["va", "ヴァ"], ["vi", "ヴィ"], ["vu", "ヴ"], ["ve", "ヴェ"], ["vo", "ヴォ"], ["vya", "ヴャ"], ["vyu", "ヴュ"], ["vye", "ヴィェ"], ["vyo", "ヴョ"], ["kye", "キェ"], ["gye", "ギェ"], ["kwa", "クァ"], ["kwi", "クィ"], ["kwe", "クェ"], ["kwo", "クォ"], ["kwa", "クヮ"], ["gwa", "グァ"], ["gwi", "グィ"], ["gwe", "グェ"], ["gwo", "グォ"], ["gwa", "グヮ"], ["she", "シェ"], ["je", "ジェ"], ["si", "スィ"], ["zi", "ズィ"], ["che", "チェ"], ["tsa", "ツァ"], ["tsi", "ツィ"], ["tse", "ツェ"], ["tso", "ツォ"], ["tsyu", "ツュ"], ["ti", "ティ"], ["tu", "トゥ"], ["tyu", "テュ"], ["di", "ディ"], ["du", "ドゥ"], ["dyu", "デュ"], ["nye", "ニェ"], ["hye", "ヒェ"], ["bye", "ビェ"], ["pye", "ピェ"], ["fa", "ファ"], ["fi", "フィ"], ["fe", "フェ"], ["fo", "フォ"], ["fya", "フャ"], ["fyu", "フュ"], ["fye", "フィェ"], ["fyo", "フョ"], ["hu", "ホゥ"], ["mye", "ミェ"], ["rye", "リェ"]]]
+<?php } else { ?>
+    [ <?php print(THINGS); ?>, "つ", "choses",     [["1", "ひとつ"], ["2", "ふたつ"], ["3", "みっつ"], ["4", "よっつ"], ["5", "いつつ"], ["6", "むっつ"], ["7", "ななつ"], ["8", "やっつ"], ["9", "ここのつ"], ["10", "とう"] ]],
+    [ <?php print(MONTHS); ?>, "月", "mois",       [["1", "いちがつ"], ["2", "にがつ"], ["3", "さんがつ"], ["4", "しがつ"], ["5", "ごがつ"], ["6", "ろくがつ"], ["7", "しちがつ"], ["8", "はちがつ"], ["9", "くがつ"], ["10", "じゅうがつ"], ["11", "じゅういちがつ"], ["12", "じゅうにがつ"] ]],
+    [ <?php print(DAYS); ?>, "日", "jour du mois", [["1", "ついたち"], ["2", "ふつか"], ["3", "みっか"], ["4", "よっか"], ["5", "いつか"], ["6", "むいか"], ["7", "なのか"], ["8", "ようか"], ["9", "ここのか"], ["10", "とうか"], ["11", "じゅういちにち"], ["12", "じゅうににち"], ["13", "じゅうさんにち"], ["14", "じゅうよっか"], ["15", "じゅうごにち"], ["16", "じゅうろくにち"], ["17", "じゅうしちにち"], ["18", "じゅうはちにち"], ["19", "じゅうくにち"], ["20", "はつか"], ["21", "にじゅういちにち"], ["22", "にじゅうににち"], ["23", "にじゅうさんにち"], ["24", "にじゅうよっか"], ["25", "にじゅうごにち"], ["26", "にじゅうろくにち"], ["27", "にじゅうしちにち"], ["28", "にじゅうはちにち"], ["29", "にじゅうくにち"], ["30", "さんじゅうにち"], ["31", "さんじゅういちにち"] ]],
+    [ <?php print(HOURS); ?>, "時", "heure",       [["1", "いちじ"], ["2", "にじ"], ["3", "さんじ"], ["4", "よじ"], ["5", "ごじ"], ["6", "ろくじ"], ["7", "しちじ"], ["8", "はちじ"], ["9", "くじ"], ["10", "じゅうじ"], ["11", "じゅういちじ"], ["12", "じゅうにじ"] ]],
+    [ <?php print(MINUTES); ?>, "分", "minute",    [["1", "いっぷん"], ["2", "にふん"], ["3", "さんぷん"], ["4", "よんぷん"], ["5", "ごふん"], ["6", "ろっぷん"], ["7", "ななふん"], ["8", "はっぷん"], ["9", "きゅうふん"], ["10", "じゅっぷん"], ["15", "じゅうごふん"], ["30", "さんじゅっぷん"] ]],
+<?php } ?>
 ];
 
 var selection = [];
@@ -113,7 +138,7 @@ function nextFace() {
 
 function printCard() {
     $("#txt").css("color", "#EEEEEE");
-    $("#txt").css("font-size", "170px");
+    $("#txt").css("font-size", "<?php if ($mode == MODEKANA) { ?>170<?php } else { ?>80<?php } ?>px");
     document.getElementById("txt").innerHTML = card[side];
     $("#src").hide();
     if (side == 0) {
@@ -294,8 +319,11 @@ function printButtons() {
                 <div id="refresh" onclick="refresh();" class="next">⟳</div>
             </div>
         </div>
-        <p style="font-size:45%;margin-top:25px;">Generated in <?php print(microtime(true) - $timestart); ?> seconds::::<a href="https://github.com/er-1/kana">GitHub</a></p>
+        <p style="font-size:75%;font-variant:small-caps;margin-top:30px;">:::: <a href="?M=<?php if ($mode == MODEKANA) { print(MODENB); ?>">Nombres<?php } else { print(MODEKANA); ?>">Kana<?php } ?></a> ::::</p>
+        <p style="font-size:45%">Generated in <?php print(microtime(true) - $timestart); ?> seconds::::<a href="https://github.com/er-1/kana">GitHub</a></p>
+<?php if ($mode == MODEKANA) { ?>
         <p style="font-size:45%;">Thanks to <a href="https://www.cl.cam.ac.uk/~fms27/">Franck Stajano</a> for his sets of <a href="https://www.cl.cam.ac.uk/~fms27/goodies/fms-kana.pdf">flash cards</a> to practice the Japanese kana.</p>
         <p style="font-size:45%;">Extended katakana from <a href="https://en.wikipedia.org/wiki/Katakana">here</a>.</p>
+<?php } ?>
     </body>
     </html>
